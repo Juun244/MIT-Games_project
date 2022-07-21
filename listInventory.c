@@ -21,7 +21,6 @@ int main()
 	//메모리에 헤드 노드 추가
 	struct Node *head = malloc(sizeof(struct Node));  
 	head->next = NULL;
-	strcpy(head->data,"인벤토리 :");
 			
 	add_(head,"aaaa");
 	add_(head,"bbbb");
@@ -75,8 +74,9 @@ printNode_(head);
 
 void printNode_(struct Node *head)
 {
-	struct Node *curr = head;
-
+	struct Node *curr = head->next;
+	
+	printf("인벤토리 : ");
 	while(curr != NULL)
 	{
 		printf("%s  ", curr->data);
@@ -143,13 +143,13 @@ void sort_(struct Node *target)
 	{
 		curr=target->next;
 		next=curr->next;
-		if(strcmp(curr,next)>0)		swap_(curr,next);
+		if(strcmp(curr->data,next->data)>0)		swap_(curr,next);
 		for(temp=length-2;temp>0;temp--)
 		{
 			curr=curr->next;
 			next=curr->next;
 			if(next==NULL)	break; 
-			if(strcmp(curr,next)>0)		swap_(curr->data,next->data);
+			if(strcmp(curr->data,next->data)>0)		swap_(curr,next);
 		}
 	}
 	
